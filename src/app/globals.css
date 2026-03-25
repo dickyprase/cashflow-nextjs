@@ -1,0 +1,213 @@
+@import "tailwindcss";
+@import "./neo-brutalism.css";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Emerald Finance Theme — static fallback values.
+     At runtime ThemeContext overrides these via inline style on <html>. */
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+  --color-primary-950: #022c22;
+
+  --color-accent-50: #eff6ff;
+  --color-accent-100: #dbeafe;
+  --color-accent-200: #bfdbfe;
+  --color-accent-300: #93c5fd;
+  --color-accent-400: #60a5fa;
+  --color-accent-500: #3b82f6;
+  --color-accent-600: #2563eb;
+  --color-accent-700: #1d4ed8;
+  --color-accent-800: #1e40af;
+  --color-accent-900: #1e3a8a;
+
+  --color-income: #10b981;
+  --color-expense: #ef4444;
+  --color-transfer: #6366f1;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+}
+
+/* ThemeContext runtime variables — these default to the light emerald palette.
+   ThemeContext sets them on <html> via element.style. */
+:root {
+  --c-bg-main: #f8fafc;
+  --c-bg-card: #ffffff;
+  --c-bg-nav: rgba(255, 255, 255, 0.8);
+  --c-text-primary: #111827;
+  --c-text-secondary: #6b7280;
+  --c-text-muted: #9ca3af;
+  --c-border: #e5e7eb;
+  --c-border-light: rgba(229, 231, 235, 0.5);
+}
+
+/* Base styles */
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+
+  html,
+  body {
+    height: 100dvh;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--c-bg-main);
+    color: var(--c-text-primary);
+    @apply antialiased;
+  }
+
+  .dark body,
+  body.dark {
+    background: var(--c-bg-main);
+    color: var(--c-text-primary);
+  }
+
+  .dark * {
+    @apply border-gray-800;
+  }
+}
+
+/* Dark mode support */
+.dark {
+  --color-bg-main: #0a0a0a;
+  --color-bg-card: #171717;
+  --color-bg-nav: #111111;
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #a3a3a3;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 2px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #404040;
+}
+
+/* Skeleton animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #262626 25%, #333 50%, #262626 75%);
+  background-size: 200% 100%;
+}
+
+/* Bottom nav safe area */
+.pb-safe {
+  padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px));
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.dark .glass {
+  background: rgba(17, 17, 17, 0.8);
+}
+
+/* Card hover effect */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark .card-hover:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Number formatting */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Custom Toastify Styles for Cashflow App */
+:root {
+  --toastify-color-success: #10B981;
+  --toastify-color-error: #EF4444;
+  --toastify-color-info: #3B82F6;
+  --toastify-color-warning: #F59E0B;
+  --toastify-text-color-light: #fff;
+  --toastify-font-family: var(--font-sans);
+}
+
+.Toastify__toast {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+  color: #fff !important;
+  padding: 12px 16px !important;
+}
+
+.Toastify__close-button {
+  color: #fff !important;
+  opacity: 0.8;
+  align-self: center !important;
+}
+
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
+/* Mobile full width override */
+@media only screen and (max-width: 640px) {
+  .Toastify__toast-container {
+    width: calc(100% - 32px) !important;
+    left: 16px !important;
+    right: 16px !important;
+    top: 16px !important;
+    padding: 0 !important;
+  }
+
+  .Toastify__toast {
+    margin-bottom: 12px !important;
+    justify-content: flex-start !important;
+  }
+}

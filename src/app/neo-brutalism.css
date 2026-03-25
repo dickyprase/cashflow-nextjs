@@ -1,0 +1,250 @@
+/* ─────────────────────────────────────────────────────
+   NEO BRUTALISM THEME OVERRIDES
+   Applied when <html> has class "theme-neo-brutalism"
+   ───────────────────────────────────────────────────── */
+
+/* ── Typography ─────────────────────────────────────── */
+.theme-neo-brutalism body {
+  font-family: 'Inter', 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 500;
+  background: var(--c-bg-main);
+  color: var(--c-text-primary);
+}
+
+/* ── Universal border & shadow overrides ────────────── */
+.theme-neo-brutalism * {
+  border-color: #1a1a1a !important;
+}
+
+.theme-neo-brutalism [class*="rounded-2xl"],
+.theme-neo-brutalism [class*="rounded-xl"],
+.theme-neo-brutalism [class*="rounded-lg"],
+.theme-neo-brutalism [class*="rounded-full"]:not(nav *):not([class*="animate-spin"]) {
+  border-radius: 12px !important;
+}
+
+/* Cards & containers */
+.theme-neo-brutalism [class*="bg-white"],
+.theme-neo-brutalism .bg-white {
+  background: var(--c-bg-card) !important;
+  border: 2px solid #1a1a1a !important;
+}
+
+/* Fix double-border on already-bordered elements */
+.theme-neo-brutalism [class*="shadow-sm"] {
+  box-shadow: none !important;
+}
+
+.theme-neo-brutalism [class*="shadow-lg"] {
+  box-shadow: 6px 6px 0px #1a1a1a !important;
+}
+
+/* ── Card hover effect ──────────────────────────────── */
+.theme-neo-brutalism .card-hover {
+  box-shadow: 4px 4px 0px #1a1a1a !important;
+}
+
+.theme-neo-brutalism .card-hover:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 6px 6px 0px #1a1a1a !important;
+}
+
+.theme-neo-brutalism .card-hover:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0px #1a1a1a !important;
+}
+
+/* ── Glassmorphism → Solid ──────────────────────────── */
+.theme-neo-brutalism .glass {
+  background: var(--c-bg-card) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: 2px solid #1a1a1a !important;
+}
+
+/* ── Bottom Navigation ──────────────────────────────── */
+.theme-neo-brutalism nav[class*="fixed bottom-0"] {
+  background: var(--c-bg-nav) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-top: 3px solid #1a1a1a !important;
+  box-shadow: 0 -4px 0px #1a1a1a !important;
+}
+
+/* FAB button in bottom nav */
+.theme-neo-brutalism nav [class*="bg-primary-600"][class*="rounded-full"] {
+  border: 4px solid #1a1a1a !important;
+  box-shadow: 4px 4px 0px #1a1a1a !important;
+  border-radius: 12px !important;
+  color: #1a1a1a !important;
+  background-color: #C4E4D3 !important;
+  /* Mint green */
+}
+
+/* Nav Item active states */
+.theme-neo-brutalism nav .text-primary-600 {
+  color: #1a1a1a !important;
+  font-weight: 800 !important;
+}
+
+.theme-neo-brutalism nav [class*="bg-primary-50"] {
+  background: #FFE81A !important;
+  /* Vibrant brutalist yellow */
+  border: 2px solid #1a1a1a !important;
+  box-shadow: 2px 2px 0px #1a1a1a !important;
+  border-radius: 8px !important;
+  opacity: 1 !important;
+}
+
+/* ── Buttons ────────────────────────────────────────── */
+.theme-neo-brutalism button[class*="bg-primary"],
+.theme-neo-brutalism button[class*="bg-red"],
+.theme-neo-brutalism button[class*="bg-green"],
+.theme-neo-brutalism button[class*="bg-blue"] {
+  border: 2px solid #1a1a1a !important;
+  box-shadow: 4px 4px 0px #1a1a1a !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.theme-neo-brutalism button[class*="bg-primary"]:active,
+.theme-neo-brutalism button[class*="bg-red"]:active,
+.theme-neo-brutalism button[class*="bg-green"]:active,
+.theme-neo-brutalism button[class*="bg-blue"]:active {
+  box-shadow: 1px 1px 0px #1a1a1a !important;
+  transform: translate(2px, 2px);
+}
+
+/* ── Input fields ───────────────────────────────────── */
+.theme-neo-brutalism input,
+.theme-neo-brutalism select,
+.theme-neo-brutalism textarea {
+  border: 2px solid #1a1a1a !important;
+  border-radius: 12px !important;
+  background: #fff !important;
+  font-weight: 600;
+  color: #1a1a1a !important;
+  /* Force text color so it doesn't turn white on focus */
+}
+
+/* Fix icons inside relative input containers turning white on focus or disappearing due to stacking context */
+.theme-neo-brutalism .relative>svg,
+.theme-neo-brutalism .relative>span.absolute {
+  color: #1a1a1a !important;
+  z-index: 10;
+}
+
+/* Fix borders and outlines on focus */
+.theme-neo-brutalism input:focus,
+.theme-neo-brutalism select:focus,
+.theme-neo-brutalism textarea:focus {
+  outline: none !important;
+  --tw-ring-shadow: 0 0 #0000 !important;
+  /* Disable Tailwind focus rings */
+}
+
+/* Fix double borders when input is inside a container that also has borders */
+/* The relative container usually doesn't have borders, but if it does, 
+   we rely on the input's own brutalist border. */
+
+/* Decorative circles inside hero cards – keep them */
+.theme-neo-brutalism [class*="bg-gradient-to-br"] [class*="bg-white/10"],
+.theme-neo-brutalism [class*="bg-gradient-to-br"] [class*="bg-white/5"] {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Inner frosted panels in hero cards */
+.theme-neo-brutalism [class*="bg-white/15"] {
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: none !important;
+  border: 2px solid rgba(10, 10, 10, 0.2) !important;
+  /* Darker subtle border */
+  box-shadow: none !important;
+  border-radius: 8px !important;
+}
+
+/* ── Progress bars ──────────────────────────────────── */
+.theme-neo-brutalism [class*="bg-black/"] {
+  border: 2px solid #1a1a1a !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+}
+
+/* ── Badges / Pills ─────────────────────────────────── */
+.theme-neo-brutalism [class*="rounded-full"][class*="px-"] {
+  border-radius: 4px !important;
+  border: 2px solid #1a1a1a !important;
+  font-weight: 700 !important;
+}
+
+/* ── Skeleton animation ─────────────────────────────── */
+.theme-neo-brutalism .skeleton {
+  background: repeating-linear-gradient(-45deg,
+      #e5e5e5,
+      #e5e5e5 8px,
+      #d4d4d4 8px,
+      #d4d4d4 16px) !important;
+  border: 2px solid #1a1a1a !important;
+  animation: none !important;
+}
+
+/* ── Scrollbar ──────────────────────────────────────── */
+.theme-neo-brutalism ::-webkit-scrollbar-thumb {
+  background: #1a1a1a !important;
+  border-radius: 0 !important;
+}
+
+.theme-neo-brutalism ::-webkit-scrollbar-track {
+  background: #e5e5e5 !important;
+}
+
+/* ── Modals / Overlays ──────────────────────────────── */
+.theme-neo-brutalism [class*="backdrop-blur"] {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ── Toggle switches ────────────────────────────────── */
+.theme-neo-brutalism button[class*="rounded-full"][class*="w-12"] {
+  border: 2px solid #1a1a1a !important;
+  border-radius: 12px !important;
+  box-shadow: 2px 2px 0px #1a1a1a !important;
+}
+
+/* ── Text emphasis for brutalism ────────────────────── */
+.theme-neo-brutalism h1,
+.theme-neo-brutalism h2,
+.theme-neo-brutalism h3 {
+  font-weight: 900 !important;
+  letter-spacing: -0.02em;
+}
+
+/* ── Avatar / Icon containers ───────────────────────── */
+.theme-neo-brutalism div[class*="w-14"][class*="h-14"][class*="rounded"]:not(nav *),
+.theme-neo-brutalism div[class*="w-12"][class*="h-12"][class*="rounded"]:not(nav *),
+.theme-neo-brutalism div[class*="w-10"][class*="h-10"][class*="rounded"]:not(nav *),
+.theme-neo-brutalism div[class*="w-9"][class*="h-9"][class*="rounded"]:not(nav *),
+.theme-neo-brutalism div[class*="w-8"][class*="h-8"][class*="rounded"]:not(nav *) {
+  border: 2px solid #1a1a1a !important;
+  border-radius: 12px !important;
+  /* Override inline transparent colors with solid white for brutalist look */
+  background-color: #fff !important;
+  opacity: 1 !important;
+}
+
+/* ── Root wrapper background ────────────────────────── */
+.theme-neo-brutalism .min-h-screen {
+  background: var(--c-bg-main) !important;
+}
+
+/* ── Subtle alert / notification cards ──────────────── */
+.theme-neo-brutalism [class*="bg-red-50"],
+.theme-neo-brutalism [class*="bg-green-50"],
+.theme-neo-brutalism [class*="bg-yellow-50"],
+.theme-neo-brutalism [class*="bg-blue-50"] {
+  border: 2px solid #1a1a1a !important;
+  border-radius: 12px !important;
+}
